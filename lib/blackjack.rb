@@ -1,3 +1,5 @@
+require 'pry'
+
 def welcome
   puts "Welcome to the Blackjack Table"
 end
@@ -28,8 +30,20 @@ def initial_round
   sum
 end
 
-def hit?
-  # code hit? here
+def hit?(total)
+  prompt_user
+  get_user_input
+  binding.pry
+  
+  # if get_user_input == 's'
+    
+  # elsif get_user_input == 's'
+  #   deal_card
+  #   new_total = total + deal_card
+  # else
+  #   invalid_command
+  # end
+  new_total
 end
 
 def invalid_command
