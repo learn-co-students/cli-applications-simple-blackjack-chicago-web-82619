@@ -30,22 +30,19 @@ def initial_round
   sum
 end
 
-def hit?(input)
+def hit?(card_total)
   prompt_user
-  get_user_input
-  if get_user_input == 's'
-    puts "Your card total is #{input}."
-    total = input
-  elsif get_user_input == 'h'
-    deal_card
-    puts "Your new card is #{deal_card}"
-    total = input + deal_card
-    puts "Your total is #{total}"
-  else
-    invalid_command
-    hit?(input)
-  end
-  total
+  letter = get_user_input
+  # binding.pry
+   if letter == 'h'
+    card_total = card_total + deal_card
+    puts "Your cards add up to #{card_total}"
+   elsif letter == 's'
+   else
+     invalid_command
+     hit?(card_total)
+   end
+  card_total
 end
 
 def invalid_command
@@ -57,6 +54,11 @@ end
 #####################################################
 
 def runner
-  # code runner here
+  welcome
+  total = initial_round
+  until total > 21 do
+    total = hit?(total)
+  end
+  end_game(total)
 end
     
