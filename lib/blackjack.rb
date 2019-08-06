@@ -30,20 +30,22 @@ def initial_round
   sum
 end
 
-def hit?(total)
+def hit?(input)
   prompt_user
   get_user_input
-  binding.pry
-  
-  # if get_user_input == 's'
-    
-  # elsif get_user_input == 's'
-  #   deal_card
-  #   new_total = total + deal_card
-  # else
-  #   invalid_command
-  # end
-  new_total
+  if get_user_input == 's'
+    puts "Your card total is #{input}."
+    total = input
+  elsif get_user_input == 'h'
+    deal_card
+    puts "Your new card is #{deal_card}"
+    total = input + deal_card
+    puts "Your total is #{total}"
+  else
+    invalid_command
+    hit?(input)
+  end
+  total
 end
 
 def invalid_command
